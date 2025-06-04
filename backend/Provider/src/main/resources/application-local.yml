@@ -1,0 +1,24 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/hpd_test
+    username: root
+    password: Preet@123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    root: INFO  # Global log level
+    com.hpd.provider.filters.JwtAuthenticationFilter: DEBUG
+server:
+  port: 8081
+  servlet:
+   context-path: /providers
+cognito:
+  issuer: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_omELU30NM
+
+

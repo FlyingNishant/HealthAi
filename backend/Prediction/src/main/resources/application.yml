@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: local
+sageMakerClient:
+  url: http://localhost:8080/v1

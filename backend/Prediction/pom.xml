@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.hpd</groupId>
+    <artifactId>Prediction</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Prediction</name>
+    <description>App for fetching disease predictions from ML model</description>
+    <url/>
+    <properties>
+        <java.version>17</java.version>
+        <sonar.projectKey>EngineeringExcellence_cycle21_healthcare_predictive_diagnosis_89178c39-14a2-4879-9a62-73bc49892eed</sonar.projectKey>
+        <sonar.projectName>Cycle21_Healthcare_Predictive_Diagnosis</sonar.projectName>
+        <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+    </properties>
+    <dependencies>
+        <!-- Spring Boot -->
+        <!--Allows Java applications written in SpringBoot 3 framework to run in AWS Lambda-->
+        <dependency>
+            <groupId>com.amazonaws.serverless</groupId>
+            <artifactId>aws-serverless-java-container-springboot3</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- The core SDK dependency is required to use AWS services-->
+        <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/aws-core -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-core</artifactId>
+            <version>1.12.158</version>
+        </dependency>
+
+        <!-- To interact with SageMaker for creating, updating, or managing models: -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>sagemaker</artifactId>
+            <version>2.29.51</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/sagemakerruntime -->
+        <!--To invoke deployed SageMaker endpoints for predictions-->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>sagemakerruntime</artifactId>
+            <version>2.29.51</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
